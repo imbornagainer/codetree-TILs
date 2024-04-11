@@ -12,16 +12,15 @@ visited = [
     for _ in range(m)
 ]
 
-Destiny = 0;
-
 def in_range(x, y):
     return x >= 0 and x < n and y >= 0 and y < n
+
 
 def CanIgo(x, y):
     # Grid을 벗어날 경우 x
     if not in_range(x, y):
         return False;
-    
+
     # 뱀 있을 경우 x
     if grid[x][y] == 0:
         return False;
@@ -35,17 +34,16 @@ def CanIgo(x, y):
 def DFS(x, y):
     # dx, dy 좌표설정(아래와 오른쪽으로만 갈 수 있음)
     # 아래쪽, 오른쪽
-    dxs, dxy = [1, 0],[0, 1];
-    global Destiny;    
+    # 오른쪽, 아래쪽
+    # dxs, dxy = [1, 0], [0, 1];
+    dxs, dxy = [0, 1], [1, 0];
 
     for dx, dy in zip(dxs, dxy):
         new_x, new_y = x + dx, y + dy;
-        Destiny = 0;
+
         if CanIgo(new_x, new_y):
             visited[new_x][new_y] = 1;
-            Destiny = 1;
             DFS(new_x, new_y);
 
-Destiny = 0;
 DFS(0, 0);
-print(Destiny)
+print(visited[n-1][m-1]);
