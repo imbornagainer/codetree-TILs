@@ -46,4 +46,5 @@ def DFS(x, y):
             DFS(new_x, new_y);
 
 DFS(0, 0);
-print(visited[n-1][m-1]);
+
+print(visited[4][4]);
