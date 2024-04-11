@@ -1,6 +1,3 @@
-import sys
-sys.stdin = open("C:\\Users\\Be Pious\\Documents\\삼성\\input6.txt", "r")
-
 n, m = map(int, input().split());
 x, y = 0, 0
 
