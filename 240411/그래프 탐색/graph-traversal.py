@@ -1,7 +1,5 @@
-# N : 정점
-# M : 간선
-
-n, m = map(int, input().split())
+# N: 정점, M: 간선
+n, m = map(int, input().split());
 
 graph = [
     [] for _ in range(n+1)
@@ -23,11 +21,11 @@ def DFS(vertex):
             DFS(curr_v);
 
 for i in range(m):
-    v1, v2 = tuple(map(int, input().split()));
-    graph[v1].append(v2);
-    graph[v2].append(v1);
+    v1, v2 = tuple(map(int, input().split()))
+    graph[v1].append(v2)
+    graph[v2].append(v1)
 
-vertex_cnt = 0;
+# print(graph);
 visited[1] = 1;
 DFS(1);
 print(vertex_cnt);
