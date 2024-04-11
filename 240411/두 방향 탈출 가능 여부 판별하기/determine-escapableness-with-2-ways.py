@@ -29,15 +29,16 @@ def can_go(x, y):
 def dfs(x, y):
     dxs, dys = [0, 1], [1, 0]
     
+    # 탐색을 시작하기 전에 해당 위치를 방문했음을 표시해줍니다.
+    visited[x][y] = 1
+    
     for dx, dy in zip(dxs, dys):
         new_x, new_y = x + dx, y + dy
         
         if can_go(new_x, new_y):
-            visited[new_x][new_y] = 1
             dfs(new_x, new_y)
             
             
-visited[0][0] = 1
 dfs(0, 0)
 
 print(visited[n - 1][m - 1])
