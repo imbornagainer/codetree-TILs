@@ -1,8 +1,12 @@
-# 변수 선언 및 입력
-n, m = tuple(map(int, input().split()))
+import sys
+sys.stdin = open("C:\\Users\\Be Pious\\Documents\\삼성\\input6.txt", "r")
+
+n, m = map(int, input().split());
+x, y = 0, 0
+
 grid = [
     list(map(int, input().split()))
-    for _ in range(n)
+    for _ in (range(n))
 ]
 
 visited = [
@@ -10,35 +14,47 @@ visited = [
     for _ in range(n)
 ]
 
-# 주어진 위치가 격자를 벗어나는지 여부를 반환합니다.
 def in_range(x, y):
-    return 0 <= x and x < n and 0 <= y and y < m
+    return x >= 0 and x < n and y >= 0 and y < m
 
-
-# 주어진 위치로 이동할 수 있는지 여부를 확인합니다.
-def can_go(x, y):
+def CanIgo(x, y):
+    # Grid을 벗어날 경우 x
     if not in_range(x, y):
-        return False
-    
-    if visited[x][y] or grid[x][y] == 0:
-        return False
-    
-    return True
+        return False;
 
+    # 뱀 있을 경우 x
+    if grid[x][y] == 0:
+        return False;
 
-def dfs(x, y):
-    dxs, dys = [0, 1], [1, 0]
-    
-    # 탐색을 시작하기 전에 해당 위치를 방문했음을 표시해줍니다.
-    visited[x][y] = 1
-    
-    for dx, dy in zip(dxs, dys):
-        new_x, new_y = x + dx, y + dy
-        
-        if can_go(new_x, new_y):
-            dfs(new_x, new_y)
-            
-            
-dfs(0, 0)
+    # 방문한적이 있을 경우 x
+    if visited[x][y] == 1:
+        return False;
 
-print(visited[n - 1][m - 1])
+    return True;
+
+def DFS(x, y):
+    # dx, dy 좌표설정(아래와 오른쪽으로만 갈 수 있음)
+    # 아래쪽, 오른쪽
+    # 오른쪽, 아래쪽
+    dxs, dxy = [1, 0], [0, 1];
+    # dxs, dxy = [0, 1], [1, 0];
+
+    for dx, dy in zip(dxs, dxy):
+        new_x, new_y = x + dx, y + dy;
+
+        if CanIgo(new_x, new_y):
+            visited[new_x][new_y] = 1;
+            DFS(new_x, new_y);
+
+# for i in visited:
+#     print(i, end=" ")
+#     print();
+# print();
+
+DFS(0, 0);
+
+# for i in visited:
+#     print(i, end=" ")
+#     print();
+# print(visited);
+print(visited[-1][-1]);
