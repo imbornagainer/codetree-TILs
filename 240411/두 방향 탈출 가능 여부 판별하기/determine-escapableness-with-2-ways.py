@@ -36,15 +36,16 @@ def DFS(x, y):
     # dx, dy 좌표설정(아래와 오른쪽으로만 갈 수 있음)
     # 아래쪽, 오른쪽
     dxs, dxy = [1, 0],[0, 1];
-    global Destiny;
+    global Destiny;    
 
     for dx, dy in zip(dxs, dxy):
         new_x, new_y = x + dx, y + dy;
+        Destiny = 0;
         if CanIgo(new_x, new_y):
             visited[new_x][new_y] = 1;
             Destiny = 1;
             DFS(new_x, new_y);
 
 Destiny = 0;
-DFS(n-1,m-1);
+DFS(0, 0);
 print(Destiny)
