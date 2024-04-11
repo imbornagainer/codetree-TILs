@@ -1,49 +1,43 @@
-n, m = map(int, input().split());
-
-x, y = 0, 0
-
+# 변수 선언 및 입력
+n, m = tuple(map(int, input().split()))
 grid = [
     list(map(int, input().split()))
-    for _ in (range(n))
+    for _ in range(n)
 ]
 
 visited = [
-    [0 for _ in range(n)]
-    for _ in range(m)
+    [0 for _ in range(m)]
+    for _ in range(n)
 ]
 
+# 주어진 위치가 격자를 벗어나는지 여부를 반환합니다.
 def in_range(x, y):
-    return x >= 0 and x < n and y >= 0 and y < n
+    return 0 <= x and x < n and 0 <= y and y < m
 
-def CanIgo(x, y):
-    # Grid을 벗어날 경우 x
+
+# 주어진 위치로 이동할 수 있는지 여부를 확인합니다.
+def can_go(x, y):
     if not in_range(x, y):
-        return False;
+        return False
+    
+    if visited[x][y] or grid[x][y] == 0:
+        return False
+    
+    return True
 
-    # 뱀 있을 경우 x
-    if grid[x][y] == 0:
-        return False;
 
-    # 방문한적이 있을 경우 x
-    if visited[x][y] == 1:
-        return False;
+def dfs(x, y):
+    dxs, dys = [0, 1], [1, 0]
+    
+    for dx, dy in zip(dxs, dys):
+        new_x, new_y = x + dx, y + dy
+        
+        if can_go(new_x, new_y):
+            visited[new_x][new_y] = 1
+            dfs(new_x, new_y)
+            
+            
+visited[0][0] = 1
+dfs(0, 0)
 
-    return True;
-
-def DFS(x, y):
-    # dx, dy 좌표설정(아래와 오른쪽으로만 갈 수 있음)
-    # 아래쪽, 오른쪽
-    # 오른쪽, 아래쪽
-    # dxs, dxy = [1, 0], [0, 1];
-    dxs, dxy = [0, 1], [1, 0];
-
-    for dx, dy in zip(dxs, dxy):
-        new_x, new_y = x + dx, y + dy;
-
-        if CanIgo(new_x, new_y):
-            visited[new_x][new_y] = 1;
-            DFS(new_x, new_y);
-
-DFS(0, 0);
-# print(visited[n-1][m-1])
-print(visited[-1][-1])
+print(visited[n - 1][m - 1])
