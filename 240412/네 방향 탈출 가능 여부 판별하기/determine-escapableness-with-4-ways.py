@@ -46,7 +46,6 @@ def DSF(x,y):
             DSF(new_x,new_y);
 
 visited[0][0];
-
 DSF(0,0);
 
 # for row in visited:
