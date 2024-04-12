@@ -8,8 +8,8 @@ grid = [
 ]
 
 visited = [
-    [0 for _ in range(n)]
-    for _ in range(m)
+    [0 for _ in range(m)]
+    for _ in range(n)
 ]
 
 q = deque()
@@ -22,13 +22,13 @@ def CanIgo(x,y):
     if not in_range(x,y):
         return 0;
 
-    # 가본 곳이면 False
-    if (visited[x][y] == 1):
-        return 0;
-
     # 뱀이 있으면 False
     if (grid[x][y]) == 0:
         return 0;
+    
+    # 가본 곳이면 False
+    if (visited[x][y] == 1):
+        return 0;    
 
     return True;
 
