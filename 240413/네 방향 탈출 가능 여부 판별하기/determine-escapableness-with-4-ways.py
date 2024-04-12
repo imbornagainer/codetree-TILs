@@ -103,10 +103,11 @@ def bfs(si,sj):
 
 # while True:
 bfs(0,0)
+print(v[N-1][M-1])
 
-for i in v:
-    print(i, end = " ")
-    print()
+# for i in v:
+#     print(i, end = " ")
+#     print()
 #     tlst, dist = bfs(ci,cj)
 #     if len(tlst)==0:        # 더이상 먹을 물고기 없는 경우
 #         break
