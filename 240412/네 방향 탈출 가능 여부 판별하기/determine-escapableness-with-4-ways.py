@@ -27,7 +27,7 @@ def CanIgo(x,y):
         return 0;
 
     # 뱀이 있으면 False
-    if (grid[y][x]) == 0:
+    if (grid[x][y]) == 0:
         return 0;
 
     return True;
