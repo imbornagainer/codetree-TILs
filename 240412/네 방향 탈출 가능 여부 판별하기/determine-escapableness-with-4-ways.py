@@ -86,5 +86,5 @@ visited[0][0] = True
 bfs()
 
 # 우측 하단을 방문한 적이 있는지 여부를 출력합니다.
-answer = 1 if visited[n - 1][m - 1] else 0
+answer = 1 if visited[-1][-1] else 0
 print(answer)
