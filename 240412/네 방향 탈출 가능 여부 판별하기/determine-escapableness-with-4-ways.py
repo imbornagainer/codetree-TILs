@@ -23,7 +23,7 @@ def CanIgo(x,y):
         return 0;
 
     # 가본 곳이면 False
-    if (visited[y][x] == 1):
+    if (visited[x][y] == 1):
         return 0;
 
     # 뱀이 있으면 False
