@@ -8,8 +8,8 @@ grid = [
 ]
 
 visited = [
-    [0 for _ in range(n)]
-    for _ in range(m)
+    [0 for _ in range(m)]
+    for _ in range(n)
 ]
 
 q = deque()
